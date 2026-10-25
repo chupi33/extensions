@@ -167,7 +167,7 @@ export default function Command() {
   const { data: availableBrowsers, isLoading: isLoadingAvailableBrowsers } = useAvailableBrowsers();
   const availableBrowserIdsKey = availableBrowsers?.map((browser) => browser.browserId).join("|") ?? "__pending__";
 
-  const { showDomain, openBookmarkBrowser, replaceCurrentTab, copyLinkShortcut, searchStrictness } =
+  const { showDomain, openBookmarkBrowser, replaceCurrentTab, copyLinkShortcut, searchStrictness, secondaryBrowser } =
     getPreferenceValues<Preferences>();
 
   const {
@@ -760,6 +760,40 @@ export default function Command() {
                   shortcut={COPY_LINK_SHORTCUTS[copyLinkShortcut] ?? COPY_LINK_SHORTCUTS["cmd-c"]}
                   onCopy={() => updateFrecency(item)}
                 />
+
+                {secondaryBrowser ? (
+                  <Action
+                    title={`Open in ${secondaryBrowser.name}`}
+                    icon={{ fileIcon: secondaryBrowser.path }}
+                    shortcut={{ modifiers: ["opt"], key: "enter" }}
+                    onAction={async () => {
+                      await open(item.url, secondaryBrowser);
+                      await updateFrecency(item);
+                    }}
+                  />
+                ) : null}
+
+                {availableBrowsers && availableBrowsers.length > 1 ? (
+                  <ActionPanel.Submenu
+                    title="Open with…"
+                    icon={Icon.Globe}
+                    shortcut={{ modifiers: ["cmd", "shift"], key: "enter" }}
+                  >
+                    {availableBrowsers
+                      .filter((browser) => browser.path)
+                      .map((browser) => (
+                        <Action
+                          key={browser.browserId}
+                          title={browser.name}
+                          icon={{ fileIcon: browser.path }}
+                          onAction={async () => {
+                            await open(item.url, browser);
+                            await updateFrecency(item);
+                          }}
+                        />
+                      ))}
+                  </ActionPanel.Submenu>
+                ) : null}
 
                 <Action title="Reset Ranking" icon={Icon.ArrowCounterClockwise} onAction={() => removeFrecency(item)} />
 

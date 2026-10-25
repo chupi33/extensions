@@ -38,3 +38,9 @@ If you have multiple profiles, you can select the one you want from the enabled 
 - Perplexity Comet: `⌘` + `⇧` + `O`
 - Whale: `⌘` + `⇧` + `W`
 - Zen: `⌘` + `⇧` + `Z`
+
+## Opening in Another Browser
+
+You can pick a `Secondary Browser` in the extension preferences. Once set, an `Open in <Browser>` action (`⌥` + `↵`) opens the selected bookmark in that browser, while `↵` keeps opening it in your main browser.
+
+To pick a browser on the fly instead, use the `Open with…` submenu (`⌘` + `⇧` + `↵`), which lists every installed browser supported by the extension.

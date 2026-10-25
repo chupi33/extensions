@@ -27,7 +27,8 @@
     "just_me",
     "mguellsegarra",
     "teziovsky",
-    "robertanderson"
+    "robertanderson",
+    "chupi"
   ],
   "pastContributors": [
     "danulqua"
@@ -100,6 +101,13 @@
           "value": "0.2"
         }
       ]
+    },
+    {
+      "type": "appPicker",
+      "name": "secondaryBrowser",
+      "title": "Secondary Browser",
+      "description": "Optional second browser. When set, an extra action (⌥ + ↵) opens the bookmark in this browser.",
+      "required": false
     }
   ],
   "commands": [

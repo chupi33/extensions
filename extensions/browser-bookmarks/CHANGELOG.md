@@ -1,5 +1,10 @@
 # Browser Bookmarks Changelog
 
+## [Open in Another Browser] - {PR_MERGE_DATE}
+
+- Added a `Secondary Browser` preference and an `Open in <Browser>` action (`⌥` + `↵`) to open a bookmark in a second browser ([#23662](https://github.com/raycast/extensions/issues/23662))
+- Added an `Open with…` submenu (`⌘` + `⇧` + `↵`) to open a bookmark in any installed browser
+
 ## [Support for Search] - 2026-10-24
 
 - Added support for the `Search` browser on macOS: its bookmarks, its pinned tabs, and its tab groups
